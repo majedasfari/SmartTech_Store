@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Shop>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Shop</h1>
+
+<div class="container-fluid">
+
+    <div class="text-end mb-3">
+
+        <a asp-action="Create" class="btn btn-outline-dark">Add</a>
+    </div>
+
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Brand</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var shop in Model)
+            {
+
+                <tr>
+                    <td>@shop.Id</td>
+                    <td>@shop.Name</td>
+                    <td>@shop.Price</td>
+                    <td>@shop.Description</td>
+                    <td>@shop.Brand?.Name</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-Id="@shop.Id" class="btn btn-outline-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-Id="@shop.Id" class="btn btn-outline-danger">Delete</a>
+
+                    </td>
+
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>

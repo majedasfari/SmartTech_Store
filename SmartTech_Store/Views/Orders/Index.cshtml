@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Order</h1>
+
+<div container-fluid">
+
+    <div class="text-end mb-3">
+
+        <a asp-controller="Orders" asp-action="Create" class="btn btn-outline-dark">Add New</a>
+
+    </div>
+
+
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CustomerName</th>
+                <th>TotalAmount</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var Order in Model)
+            {
+
+                <tr>
+                    <td>@Order.Id</td>
+                    <td>@Order.CustomerName</td>
+                    <td>@Order.TotalAmount</td>
+                    <td>@Order.Address</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-Id="@Order.Id" class="btn btn-outline-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-Id="@Order.Id" class="btn btn-outline-danger">Delete</a>
+
+                    </td>
+
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>

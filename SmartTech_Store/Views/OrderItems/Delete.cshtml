@@ -1,0 +1,40 @@
+﻿@model OrderItem
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete OrderItem</h1>
+
+<form method="post" asp-action="Delete">
+
+    <div class="mb-3">
+        <label asp-for="ProductName" class="form-label"></label>
+        <input asp-for="ProductName" disabled name="ProductName" class="form-control" />
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Quantity" class="form-label"></label>
+        <input asp-for="Quantity" disabled name="Quantity" class="form-control"></input>
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="UnitPrice" class="form-label"></label>
+        <input asp-for="UnitPrice" disabled name="UnitPrice" class="form-control"></input>
+        <span asp-validation-for="UnitPrice" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="OrderId" class="form-label"></label>
+        <select asp-for="OrderId" disabled name="OrderId" class="form-control" asp-items="@ViewBag.Orders">
+            <option selected value="">-- Select Order --</option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-dark">Back</a>
+
+</form>
