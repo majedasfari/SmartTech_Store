@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SmartTech_Store.Datacon;
+using SmartTech_Store.Filters;
 using SmartTech_Store.Models;
 
 namespace SmartTech_Store.Controllers
 {
+    [SessionAuthorize]
     public class OrderItemsController : Controller
     {
         private readonly majedDbContext _context;

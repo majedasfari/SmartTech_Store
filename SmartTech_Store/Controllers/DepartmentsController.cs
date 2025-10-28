@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SmartTech_Store.Datacon;
 using SmartTech_Store.Filters;
 using SmartTech_Store.Models;
@@ -8,124 +6,118 @@ using SmartTech_Store.Models;
 namespace SmartTech_Store.Controllers
 {
     [SessionAuthorize]
-    public class ShopController : Controller
+    public class DepartmentsController : Controller
     {
+
+
         private readonly majedDbContext _context;
 
-        public ShopController(majedDbContext context)
+        public DepartmentsController(majedDbContext context)
         {
             _context = context;
         }
+
+
+        [HttpGet]
         public IActionResult Index()
         {
-
             try
             {
-
-                IEnumerable<Shop> data = _context.Shops.Include("Brand").ToList();  
-                return View(data);
-
+                IEnumerable<Department> Departments = _context.Departments.ToList();
+                return View(Departments);
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
-
+                return Content("تواصل معنا على رقم 0434837543");
             }
-
-
         }
-
-        private void creatlist()
-        {
-
-            IEnumerable<Brand> Brands = _context.Brands.ToList();
-            SelectList selectListItems = new SelectList(Brands, "Id", "Name");
-            ViewBag.Categories = selectListItems;
-
-        }
-
 
 
         [HttpGet]
         public IActionResult Create()
         {
-            creatlist();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Shop shop)
+        public IActionResult Create(Department department)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(shop);
+                    return View(department);
                 }
 
-                _context.Shops.Add(shop);
+                _context.Departments.Add(department);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
+                return Content("تواصل معنا على رقم 0434837543");
             }
-        }
 
+
+        }
 
 
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            var category = _context.Shops.Find(Id);
-            creatlist();
-            return View(category);
+            var department = _context.Departments.Find(Id);
+            return View(department);
         }
 
         [HttpPost]
-        public IActionResult Edit(Shop shop)
+        public IActionResult Edit(Department department)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(shop);
+                    return View(department);
                 }
 
-                _context.Shops.Update(shop);
+                _context.Departments.Update(department);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
+                return Content("تواصل معنا على رقم 0434837543");
             }
-        }
 
+
+        }
 
 
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            var category = _context.Shops.Find(Id);
-            return View(category);
+            var department = _context.Departments.Find(Id);
+            return View(department);
         }
 
         [HttpPost]
-        public IActionResult Delete(Shop shop)
+        public IActionResult Delete(Department department)
         {
             try
             {
 
-                _context.Shops.Remove(shop);
+                _context.Departments.Remove(department);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
+                return Content("تواصل معنا على رقم 0434837543");
             }
+
+
         }
+
+
+
     }
 }

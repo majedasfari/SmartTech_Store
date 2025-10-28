@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartTech_Store.Datacon;
+using SmartTech_Store.Filters;
 using SmartTech_Store.Models;
 
 namespace SmartTech_Store.Controllers
 {
+    [SessionAuthorize]
     public class OrdersController : Controller
     {
         private readonly majedDbContext _context;
@@ -96,12 +98,12 @@ namespace SmartTech_Store.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Order department)
+        public IActionResult Delete(Order order)
         {
             try
             {
 
-                _context.Orders.Remove(department);
+                _context.Orders.Remove(order);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

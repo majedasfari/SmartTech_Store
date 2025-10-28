@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartTech_Store.Datacon;
 
@@ -11,9 +12,11 @@ using SmartTech_Store.Datacon;
 namespace SmartTech_Store.Migrations
 {
     [DbContext(typeof(majedDbContext))]
-    partial class majedDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251014083322_addFk")]
+    partial class addFk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartTech_Store.Datacon;
 
@@ -11,9 +12,11 @@ using SmartTech_Store.Datacon;
 namespace SmartTech_Store.Migrations
 {
     [DbContext(typeof(majedDbContext))]
-    partial class majedDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251011143453_createnewtable")]
+    partial class createnewtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,23 +42,6 @@ namespace SmartTech_Store.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("SmartTech_Store.Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
-                });
-
             modelBuilder.Entity("SmartTech_Store.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -64,14 +50,11 @@ namespace SmartTech_Store.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("DepartmentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("JobId")
+                    b.Property<int?>("OrderItemId")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -83,28 +66,9 @@ namespace SmartTech_Store.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
-
-                    b.HasIndex("JobId");
+                    b.HasIndex("OrderItemId");
 
                     b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("SmartTech_Store.Models.Job", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Jobs");
                 });
 
             modelBuilder.Entity("SmartTech_Store.Models.Order", b =>
@@ -188,17 +152,11 @@ namespace SmartTech_Store.Migrations
 
             modelBuilder.Entity("SmartTech_Store.Models.Employee", b =>
                 {
-                    b.HasOne("SmartTech_Store.Models.Department", "Department")
+                    b.HasOne("SmartTech_Store.Models.OrderItem", "OrderItem")
                         .WithMany("Employees")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("OrderItemId");
 
-                    b.HasOne("SmartTech_Store.Models.Job", "Job")
-                        .WithMany("Employees")
-                        .HasForeignKey("JobId");
-
-                    b.Navigation("Department");
-
-                    b.Navigation("Job");
+                    b.Navigation("OrderItem");
                 });
 
             modelBuilder.Entity("SmartTech_Store.Models.OrderItem", b =>
@@ -226,19 +184,14 @@ namespace SmartTech_Store.Migrations
                     b.Navigation("Shops");
                 });
 
-            modelBuilder.Entity("SmartTech_Store.Models.Department", b =>
-                {
-                    b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("SmartTech_Store.Models.Job", b =>
-                {
-                    b.Navigation("Employees");
-                });
-
             modelBuilder.Entity("SmartTech_Store.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("SmartTech_Store.Models.OrderItem", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

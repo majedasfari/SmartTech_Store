@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,12 +13,12 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="~/DashboardAdmintwo/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/DashboardAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="~/DashboardAdmintwo/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/DashboardAdmin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -74,8 +75,10 @@
                         <a class="collapse-item" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
                         <a class="collapse-item" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
                         <a class="collapse-item" asp-area="" asp-controller="OrderItems" asp-action="Index">OrderItems</a>
+                        <a class="collapse-item" asp-area="" asp-controller="Employees" asp-action="Index">Employees</a>
+                        <a class="collapse-item" asp-area="" asp-controller="Jobs" asp-action="Index">Jobs</a>
+                        <a class="collapse-item" asp-area="" asp-controller="Departments" asp-action="Index">Departments</a>
                         <a class="collapse-item" asp-area="" asp-controller="Aboutus" asp-action="Index">About Us</a>
-
                     </div>
                 </div>
             </li>
@@ -154,7 +157,7 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="~/DashboardAdmintwo/img/undraw_rocket.svg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="~/DashboardAdmin/img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div>
@@ -282,7 +285,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="~/DashboardAdmintwo/img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="~/DashboardAdmin/img/undraw_profile_1.svg"
                                              alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -296,7 +299,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="~/DashboardAdmintwo/img/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="~/DashboardAdmin/img/undraw_profile_2.svg"
                                              alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -310,7 +313,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="~/DashboardAdmintwo/img/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="~/DashboardAdmin/img/undraw_profile_3.svg"
                                              alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -348,7 +351,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                     src="~/DashboardAdmintwo/img/undraw_profile.svg">
+                                     src="~/DashboardAdmin/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -366,7 +369,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a asp-controller="Account" asp-action="Logout" class="dropdown-item">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -380,9 +383,11 @@
 
 
 
+
                 <div>
                     @RenderBody()
                 </div>
+
 
 
 
@@ -432,21 +437,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="~/DashboardAdmintwo/vendor/jquery/jquery.min.js"></script>
-    <script src="~/DashboardAdmintwo/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/DashboardAdmin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/DashboardAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="~/DashboardAdmintwo/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/DashboardAdmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="~/DashboardAdmintwo/js/sb-admin-2.min.js"></script>
+    <script src="~/DashboardAdmin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="~/DashboardAdmintwo/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/DashboardAdmin/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="~/DashboardAdmintwo/js/demo/chart-area-demo.js"></script>
-    <script src="~/DashboardAdmintwo/js/demo/chart-pie-demo.js"></script>
+    <script src="~/DashboardAdmin/js/demo/chart-area-demo.js"></script>
+    <script src="~/DashboardAdmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

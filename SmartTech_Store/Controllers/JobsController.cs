@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SmartTech_Store.Datacon;
 using SmartTech_Store.Filters;
 using SmartTech_Store.Models;
@@ -8,124 +6,113 @@ using SmartTech_Store.Models;
 namespace SmartTech_Store.Controllers
 {
     [SessionAuthorize]
-    public class ShopController : Controller
+    public class JobsController : Controller
     {
         private readonly majedDbContext _context;
 
-        public ShopController(majedDbContext context)
+        public JobsController(majedDbContext context)
         {
             _context = context;
         }
+
+
+        [HttpGet]
         public IActionResult Index()
         {
-
             try
             {
-
-                IEnumerable<Shop> data = _context.Shops.Include("Brand").ToList();  
-                return View(data);
-
+                IEnumerable<Job> Jobs = _context.Jobs.ToList();
+                return View(Jobs);
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
-
+                return Content("تواصل معنا على رقم 0434837543");
             }
-
-
         }
-
-        private void creatlist()
-        {
-
-            IEnumerable<Brand> Brands = _context.Brands.ToList();
-            SelectList selectListItems = new SelectList(Brands, "Id", "Name");
-            ViewBag.Categories = selectListItems;
-
-        }
-
 
 
         [HttpGet]
         public IActionResult Create()
         {
-            creatlist();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Shop shop)
+        public IActionResult Create(Job job)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(shop);
+                    return View(job);
                 }
 
-                _context.Shops.Add(shop);
+                _context.Jobs.Add(job);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
+                return Content("تواصل معنا على رقم 0434837543");
             }
-        }
 
+
+        }
 
 
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            var category = _context.Shops.Find(Id);
-            creatlist();
-            return View(category);
+            var job = _context.Jobs.Find(Id);
+            return View(job);
         }
 
         [HttpPost]
-        public IActionResult Edit(Shop shop)
+        public IActionResult Edit(Job job)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(shop);
+                    return View(job);
                 }
 
-                _context.Shops.Update(shop);
+                _context.Jobs.Update(job);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
+                return Content("تواصل معنا على رقم 0434837543");
             }
-        }
 
+
+        }
 
 
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            var category = _context.Shops.Find(Id);
-            return View(category);
+            var job = _context.Jobs.Find(Id);
+            return View(job);
         }
 
         [HttpPost]
-        public IActionResult Delete(Shop shop)
+        public IActionResult Delete(Job job)
         {
             try
             {
 
-                _context.Shops.Remove(shop);
+                _context.Jobs.Remove(job);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                return Content("تواصل معنا على رقم 0509164022");
+                return Content("تواصل معنا على رقم 0434837543");
             }
+
+
         }
     }
 }

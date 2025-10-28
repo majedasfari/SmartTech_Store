@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartTech_Store.Datacon;
+using SmartTech_Store.Filters;
 using SmartTech_Store.Models;
 
 namespace SmartTech_Store.Controllers
 {
+    [SessionAuthorize]
     public class BrandController : Controller
     {
         private readonly majedDbContext _context;

@@ -1,0 +1,48 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Employee</h1>
+
+<form method="post" asp-action="Delete">
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" disabled name="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" disabled name="Password" class="form-control"></input>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" disabled name="Phone" class="form-control"></input>
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="DepartmentId" class="form-label"></label>
+        <select asp-for="DepartmentId" disabled name="DepartmentId" class="form-control" asp-items="@ViewBag.Departments">
+            <option selected value="">-- Select Department --</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="JobId" class="form-label"></label>
+        <select asp-for="JobId" disabled name="JobId" class="form-control" asp-items="@ViewBag.Jobs">
+            <option selected value="">-- Select Job --</option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-dark">Back</a>
+
+</form>

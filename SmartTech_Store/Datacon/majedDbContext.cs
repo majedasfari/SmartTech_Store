@@ -14,6 +14,9 @@ namespace SmartTech_Store.Datacon
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
     }
 }

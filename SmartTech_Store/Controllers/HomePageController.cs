@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmartTech_Store.Filters;
 
 namespace SmartTech_Store.Controllers
 {
-    [SessionAuthorize]
-    public class AboutusController : Controller
+    public class HomePageController : Controller
     {
         public IActionResult Index()
         {

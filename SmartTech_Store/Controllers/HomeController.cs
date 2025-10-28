@@ -1,9 +1,11 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using SmartTech_Store.Filters;
 using SmartTech_Store.Models;
 
 namespace SmartTech_Store.Controllers
 {
+    [SessionAuthorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -15,6 +17,7 @@ namespace SmartTech_Store.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
